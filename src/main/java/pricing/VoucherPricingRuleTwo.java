@@ -10,7 +10,7 @@ public class VoucherPricingRuleTwo implements PricingRule{
   public double applyDiscount(double productPrice, Long itemAmount) {
     double price;
     if (itemAmount < ITEMS_AMOUNT) {
-      price = productPrice;
+      price = productPrice * itemAmount;
     } else {
       var resto = itemAmount % 2;
       var count = itemAmount / 2;
