@@ -78,7 +78,7 @@ class CashRegisterTest {
   @Test
   void testApplyDiscountOnCheckOutStoreTwo() {
 
-    //   VOUCHER, TSHIRT, VOUCHER, VOUCHER, PANTS,PANTS,PANTS,TSHIRT, TSHIRT - Total: (80)€
+    //   VOUCHER, TSHIRT, VOUCHER, VOUCHER, PANTS,PANTS,PANTS,TSHIRT, TSHIRT - Total: (90)€
     CheckOut checkOut = new CheckOutStoreTwo();
     CashRegister cashRegister = new CashRegister(checkOut);
     cashRegister.addItem(new Product("PANTS","Summer Pants",7.50));
@@ -91,7 +91,7 @@ class CashRegisterTest {
     cashRegister.addItem(new Product("TSHIRT","Summer T-Shirt",20.00));
     cashRegister.addItem(new Product("TSHIRT","Summer T-Shirt",20.00));
     var result = cashRegister.getTotalAmount();
-    Assertions.assertEquals(80.00,result);
+    Assertions.assertEquals(90.00,result);
 
   }
 
