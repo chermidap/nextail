@@ -1,22 +1,21 @@
 package checkout;
 
-import pricing.DefaultPricingRule;
-import pricing.PantsPricingRule;
-import pricing.PricingRule;
-import pricing.TshirtPricingRule;
-import pricing.VoucherPricingRuleOne;
-import product.ProductType;
+import static product.ProductType.DEFAULT;
 
-public class CheckOutStoreOne extends CheckOut{
+import java.util.List;
+import pricing.DefaultPricingRule;
+import pricing.PricingRule;
+
+public class CheckOutStoreOne extends CheckOut {
+
+  public CheckOutStoreOne(List<PricingRule> pricingRuleList) {
+    super(pricingRuleList);
+  }
 
   @Override
   public PricingRule getPricingRule(String itemType) {
-    if (itemType.equals(ProductType.VOUCHER.name())) {
-      return new VoucherPricingRuleOne();
-    } else if (itemType.equals(ProductType.TSHIRT.name())) {
-      return new TshirtPricingRule();
-    } else if (itemType.equals(ProductType.PANTS.name())) {
-      return new PantsPricingRule();
-    }else return new DefaultPricingRule();
+    return pricingRuleList.stream()
+        .filter(pricingRule -> pricingRule.getType().name().equals(itemType))
+        .findFirst().orElseGet(() -> new DefaultPricingRule(DEFAULT));
   }
 }
