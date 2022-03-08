@@ -1,10 +1,16 @@
 package pricing;
 
-public class PantsPricingRuleTwo implements PricingRule {
+import product.ProductType;
+
+public class PantsPricingRuleTwo extends PricingRule {
 
   private static final double DISCOUNT_PRICE = 6.00;
 
   private static final Integer ITEMS_AMOUNT = 2;
+
+  public PantsPricingRuleTwo(ProductType type) {
+    super(type);
+  }
 
   @Override
   public double applyDiscount(double productPrice, Long size) {

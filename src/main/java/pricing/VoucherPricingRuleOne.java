@@ -1,10 +1,16 @@
 package pricing;
 
-public class VoucherPricingRuleOne implements PricingRule {
+import product.ProductType;
+
+public class VoucherPricingRuleOne extends PricingRule {
 
   private static final double PRICE_DISCOUNT = 5.00;
 
   private static final Integer ITEMS_AMOUNT = 2;
+
+  public VoucherPricingRuleOne(ProductType type) {
+    super(type);
+  }
 
   @Override
   public double applyDiscount(double productPrice, Long itemAmount) {
