@@ -1,8 +1,8 @@
 # nextail
-## Introducción
-Nextail. Kata for adding manage the cash register to Nextail business
+## Introduction
+Nextail. Kata for adding manage the cash register to Nextail business.
 
-This software are coded with Java 11 and testing with JUnit
+This software has been coded with Java 11 and testing with JUnit
 
 
 ### Prerequisites
