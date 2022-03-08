@@ -1,9 +1,16 @@
 package checkout;
 
+import java.util.List;
 import pricing.PricingRule;
 import product.Product;
 
 public abstract class CheckOut {
+
+  List<PricingRule> pricingRuleList;
+
+  protected CheckOut(List<PricingRule> pricingRuleList) {
+    this.pricingRuleList = pricingRuleList;
+  }
 
   public PricingRule scan(Product item) {
     PricingRule pricingRule = null;
@@ -13,5 +20,5 @@ public abstract class CheckOut {
     return pricingRule;
   }
 
-  protected abstract PricingRule getPricingRule(String itemType);
+  public abstract PricingRule getPricingRule(String itemType);
 }
