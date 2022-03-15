@@ -1,25 +1,19 @@
 package pricing;
 
+import product.Product;
 import product.ProductType;
 
 public class TshirtPricingRule extends PricingRule {
 
-  private static final double DISCOUNT_PRICE = 19.00;
+  PricingRuleFactory pricingRuleFactory;
 
-  private static final Integer ITEMS_AMOUNT = 2;
-
-  public TshirtPricingRule(ProductType type) {
-    super(type);
+  public TshirtPricingRule(ProductType productType,PricingRuleFactory pricingRuleFactory) {
+    this.pricingRuleFactory = pricingRuleFactory;
+    super.productType = productType;
   }
 
   @Override
-  public double applyDiscount(double productPrice,Long size) {
-    double price;
-    if(size > ITEMS_AMOUNT){
-      price = DISCOUNT_PRICE * size;
-    }else{
-      price =  productPrice * size;
-    }
-    return price;
+  public double applyDiscount(Product product, int itemAmount) {
+    return pricingRuleFactory.getDiscount(product,itemAmount);
   }
 }

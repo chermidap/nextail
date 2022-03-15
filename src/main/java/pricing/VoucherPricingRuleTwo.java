@@ -1,29 +1,25 @@
 package pricing;
 
-import product.ProductType;
+import product.Product;
 
-public class VoucherPricingRuleTwo extends PricingRule{
+public class VoucherPricingRuleTwo implements PricingRuleFactory{
 
   private static final double PRICE_DISCOUNT = 4.00;
 
   private static final Integer ITEMS_AMOUNT = 5;
 
-  public VoucherPricingRuleTwo(ProductType type) {
-    super(type);
-  }
-
   @Override
-  public double applyDiscount(double productPrice, Long itemAmount) {
+  public double getDiscount(Product product, int itemAmount) {
     double price;
     if (itemAmount < ITEMS_AMOUNT) {
-      price = productPrice * itemAmount;
+      price = product.getPrice() * itemAmount;
     } else {
       var resto = itemAmount % 2;
       var count = itemAmount / 2;
       if (resto == 0) {
         price = count * PRICE_DISCOUNT;
       } else {
-        price = count * PRICE_DISCOUNT + productPrice;
+        price = count * PRICE_DISCOUNT + product.getPrice();
       }
     }
     return price;

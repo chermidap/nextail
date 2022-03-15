@@ -33,7 +33,7 @@ public class CashRegister {
 
   private void calculateTotalPrice(Map<Product, Long> map) {
     map.forEach((k, v) -> {
-      var result = checkout.scan(k).applyDiscount(k.getPrice(),v);
+      var result = checkout.scan(k).applyDiscount(k, v.intValue());
       total = total + result;
     });
   }

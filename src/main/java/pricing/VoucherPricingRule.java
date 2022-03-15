@@ -1,13 +1,13 @@
 package pricing;
 
 import product.Product;
-import product.ProductType;;
+import product.ProductType;
 
-public class PantsPricingRule extends PricingRule {
+public class VoucherPricingRule extends PricingRule {
 
   PricingRuleFactory pricingRuleFactory;
 
-  public PantsPricingRule(ProductType productType,PricingRuleFactory pricingRuleFactory) {
+  public VoucherPricingRule(ProductType productType,PricingRuleFactory pricingRuleFactory) {
     this.pricingRuleFactory = pricingRuleFactory;
     super.productType = productType;
   }

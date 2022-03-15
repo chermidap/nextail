@@ -2,11 +2,10 @@ package pricing;
 
 import product.Product;
 
-public class PantsPricingRuleTwo implements PricingRuleFactory {
+public class PantsPricingRule2x1 implements PricingRuleFactory{
+  private static final double DISCOUNT_PRICE = 6.00;
 
-  private static final double DISCOUNT_PRICE = 7.00;
-
-  private static final Integer ITEMS_AMOUNT = 3;
+  private static final Integer ITEMS_AMOUNT = 2;
 
   @Override
   public double getDiscount(Product product, int size) {

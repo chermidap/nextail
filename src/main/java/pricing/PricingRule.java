@@ -1,18 +1,12 @@
 package pricing;
 
+import product.Product;
 import product.ProductType;
 
 public abstract class PricingRule {
 
-  private ProductType type;
+  public ProductType productType;
 
-  protected PricingRule(ProductType type) {
-    this.type = type;
-  }
+  public abstract double applyDiscount(Product product, int itemAmount);
 
-  public abstract double applyDiscount(double price, Long itemAmount);
-
-  public ProductType getType() {
-    return type;
-  }
 }

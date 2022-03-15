@@ -5,9 +5,11 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pricing.PantsPricingRule;
-import pricing.PantsPricingRuleTwo;
+import pricing.PantsPricingRule2x1;
 import pricing.PricingRule;
 import pricing.TshirtPricingRule;
+import pricing.TshirtPricingRule3Items;
+import pricing.VoucherPricingRule;
 import pricing.VoucherPricingRuleOne;
 import pricing.VoucherPricingRuleTwo;
 import product.Product;
@@ -101,20 +103,20 @@ class CashRegisterTest {
 
   }
 
-  private List<PricingRule> getPricingRulesScenarioOne(){
-    PricingRule pricingVoucherRule = new VoucherPricingRuleOne(ProductType.VOUCHER);
-    PricingRule pricingPantsRule = new PantsPricingRule(ProductType.PANTS);
-    PricingRule pricingTshirtRulerRule = new TshirtPricingRule(ProductType.TSHIRT);
+  private List<PricingRule> getPricingRulesScenarioOne() {
+    PricingRule pricingVoucherRule = new VoucherPricingRule(ProductType.VOUCHER,new VoucherPricingRuleOne());
+    PricingRule pricingPantsRule = new PantsPricingRule(ProductType.PANTS,new PantsPricingRule2x1());
+    PricingRule pricingTshirtRulerRule = new TshirtPricingRule(ProductType.TSHIRT,new TshirtPricingRule3Items());
 
-    return List.of(pricingVoucherRule,pricingPantsRule,pricingTshirtRulerRule);
+    return List.of(pricingVoucherRule, pricingPantsRule, pricingTshirtRulerRule);
   }
 
-  private List<PricingRule> getPricingRulesScenarioTwo(){
-    PricingRule pricingVoucherRule = new VoucherPricingRuleTwo(ProductType.VOUCHER);
-    PricingRule pricingPantsRule = new PantsPricingRuleTwo(ProductType.PANTS);
-    PricingRule pricingTshirtRulerRule = new TshirtPricingRule(ProductType.TSHIRT);
+  private List<PricingRule> getPricingRulesScenarioTwo() {
+    PricingRule pricingVoucherRule = new VoucherPricingRule(ProductType.VOUCHER,new VoucherPricingRuleTwo());
+    PricingRule pricingPantsRule = new PantsPricingRule(ProductType.PANTS,new PantsPricingRule2x1());
+    PricingRule pricingTshirtRulerRule = new TshirtPricingRule(ProductType.TSHIRT,new TshirtPricingRule3Items());
 
-    return List.of(pricingVoucherRule,pricingPantsRule,pricingTshirtRulerRule);
+    return List.of(pricingVoucherRule, pricingPantsRule, pricingTshirtRulerRule);
   }
 
 }

@@ -1,15 +1,17 @@
 package pricing;
 
-import product.ProductType;
+import product.Product;
 
-public class DefaultPricingRule extends PricingRule{
+public class DefaultPricingRule extends PricingRule {
 
-  public DefaultPricingRule(ProductType type) {
-    super(type);
+  PricingRuleFactory pricingRuleFactory;
+
+  public DefaultPricingRule(PricingRuleFactory pricingRuleFactory) {
+    this.pricingRuleFactory = pricingRuleFactory;
   }
 
   @Override
-  public double applyDiscount(double price, Long itemAmount) {
-    return price * itemAmount;
+  public double applyDiscount(Product product, int itemAmount) {
+   return pricingRuleFactory.getDiscount(product,itemAmount);
   }
 }

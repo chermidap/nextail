@@ -3,6 +3,7 @@ package checkout;
 import static product.ProductType.DEFAULT;
 
 import java.util.List;
+import pricing.DefaultPricingNoDiscountRule;
 import pricing.DefaultPricingRule;
 import pricing.PricingRule;
 
@@ -14,8 +15,9 @@ public class CheckOutStoreOne extends CheckOut {
 
   @Override
   public PricingRule getPricingRule(String itemType) {
+
     return pricingRuleList.stream()
-        .filter(pricingRule -> pricingRule.getType().name().equals(itemType))
-        .findFirst().orElseGet(() -> new DefaultPricingRule(DEFAULT));
+        .filter(pricingRule -> pricingRule.productType.name().equals(itemType))
+        .findFirst().orElseGet(() -> new DefaultPricingRule(new DefaultPricingNoDiscountRule()));
   }
 }
